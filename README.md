@@ -48,7 +48,7 @@ data from the MySQL database.
 
 ## Database relationship model
 
-![database_relationship](https://github.com/Wojberni/car-parts-shop/database_relationship.png?raw=true)
+![database_relationship](https://github.com/Wojberni/car-parts-shop/blob/main/database_relationship.png?raw=true)
 ## Installation
 
 To run this project you must have docker installed. It will download the lastest releases of PHP, MySQL and phpMyAdmin.
