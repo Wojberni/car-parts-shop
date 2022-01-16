@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  php-apache-environment:
+    container_name: php-apache
+    image: php-apache-environment
+    restart: "no"
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./php/src/car_parts:/var/www/html/
+    ports:
+      - '8000:80'
+  db:
+    container_name: db
+    image: mysql:latest
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: iab
+      MYSQL_USER: iab
+      MYSQL_PASSWORD: iab
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: php-my-admin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8080:80'
+    restart: "no"
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+
+volumes:
+  dbdata:
